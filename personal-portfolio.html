@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#FAFBFC">
+<title>류영지 — HR · 조직 리서처 포트폴리오</title>
+<meta name="description" content="사람과 조직을 데이터로 진단하는 HR·조직 리서처의 선정된 작업과 소개.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ tokens ============ */
+:root{
+  --paper:#FAFBFC;        /* cool white background */
+  --panel:#F1F3F6;        /* soft panel / tile bg */
+  --ink:#10161C;          /* blue-black text */
+  --mute:#5C6670;         /* secondary text */
+  --faint:#6E7883;        /* micro copy */
+  --line:#E4E8EC;         /* hairlines */
+  --accent:#2547F4;       /* ultramarine */
+  --accent-soft:#E9EDFD;  /* accent tint */
+  --ok:#1FA971;           /* availability dot */
+  --sans:"IBM Plex Sans KR",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --disp:"Space Grotesk","IBM Plex Sans KR",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:var(--sans);line-height:1.65;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+::selection{background:var(--accent);color:#fff}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 clamp(20px,4.5vw,48px)}
+.mono{font-family:var(--mono)}
+section{scroll-margin-top:84px}
+.section{padding:clamp(56px,10vh,112px) 0}
+
+/* ============ header ============ */
+.site-head{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  background:color-mix(in srgb,var(--paper) 84%,transparent);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.site-head .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;gap:16px}
+.brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:var(--ink);text-decoration:none;display:flex;align-items:baseline;gap:10px}
+.brand .mono{font-size:10px;color:var(--faint);letter-spacing:.12em}
+.site-nav{display:flex;gap:clamp(14px,3vw,30px)}
+.site-nav a{font-size:13.5px;color:var(--mute);text-decoration:none;transition:color .2s}
+.site-nav a:hover{color:var(--ink)}
+.status{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--mute);letter-spacing:.04em;white-space:nowrap}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--ok);animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(31,169,113,.35)}55%{box-shadow:0 0 0 6px rgba(31,169,113,0)}}
+
+/* ============ hero ============ */
+.hero{padding:calc(62px + clamp(52px,9vh,104px)) 0 clamp(44px,7vh,84px)}
+.eyebrow{display:flex;justify-content:space-between;align-items:baseline;gap:16px;font-family:var(--mono);font-size:12px;letter-spacing:.16em;color:var(--accent)}
+.eyebrow .right{color:var(--mute);letter-spacing:.08em}
+h1.name{
+  font-family:var(--disp);font-weight:700;
+  font-size:clamp(58px,12.5vw,138px);line-height:.98;letter-spacing:-.035em;
+  margin:22px 0 26px;
+}
+h1.name .dot{color:var(--accent)}
+.role{font-size:clamp(17px,2.3vw,21px);font-weight:600;letter-spacing:-.01em}
+.thesis{max-width:580px;color:var(--mute);font-size:15.5px;margin-top:14px}
+.hero-meta{
+  display:flex;flex-wrap:wrap;gap:14px 44px;margin-top:44px;padding-top:24px;
+  border-top:1px solid var(--line);
+}
+.hero-meta .k{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--faint);text-transform:uppercase;margin-bottom:5px}
+.hero-meta .v{font-size:14px;font-weight:600}
+
+/* ============ section head ============ */
+.sec-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:26px}
+.sec-head .label{font-family:var(--mono);font-size:12px;letter-spacing:.16em;color:var(--accent)}
+.sec-head h2{font-size:clamp(23px,3.4vw,32px);letter-spacing:-.02em;font-weight:700}
+.sec-head .range{font-family:var(--mono);font-size:12px;color:var(--faint);letter-spacing:.08em}
+
+/* ============ work index ============ */
+.rows{border-top:1px solid var(--line)}
+.row{
+  width:100%;background:none;border:0;border-bottom:1px solid var(--line);
+  padding:25px 6px;display:grid;grid-template-columns:52px 1fr auto auto 36px;
+  gap:20px;align-items:center;cursor:pointer;text-align:left;
+  font:inherit;color:inherit;
+}
+.r-idx{font-family:var(--mono);font-size:12px;color:var(--faint)}
+.r-title{font-size:clamp(18px,2.4vw,24px);font-weight:700;letter-spacing:-.015em;transition:color .2s}
+.r-title small{display:block;font-family:var(--mono);font-size:11px;font-weight:400;color:var(--faint);letter-spacing:.06em;margin-top:4px}
+.r-cat{font-family:var(--mono);font-size:11px;color:var(--mute);border:1px solid var(--line);border-radius:999px;padding:6px 14px;white-space:nowrap}
+.r-year{font-family:var(--mono);font-size:13px;color:var(--mute)}
+.r-plus{
+  width:34px;height:34px;border:1px solid var(--line);border-radius:50%;
+  display:grid;place-items:center;color:var(--mute);
+  transition:transform .4s cubic-bezier(.22,1,.36,1),border-color .2s,color .2s,background .2s;
+}
+.row:hover .r-title{color:var(--accent)}
+.row:hover .r-plus{border-color:var(--ink);color:var(--ink)}
+.row[aria-expanded="true"] .r-plus{transform:rotate(45deg);border-color:var(--accent);background:var(--accent);color:#fff}
+
+/* accordion panel */
+.panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s cubic-bezier(.22,1,.36,1)}
+.panel.open{grid-template-rows:1fr}
+.panel-inner{overflow:hidden;min-height:0}
+.panel-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(24px,4vw,56px);padding:14px 6px 44px}
+.tile{aspect-ratio:4/3;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--panel)}
+.tile svg{width:100%;height:100%;display:block}
+.p-title{font-size:17px;font-weight:700;margin-bottom:10px}
+.p-desc{color:var(--mute);font-size:15px;max-width:52ch}
+.p-list{list-style:none;margin-top:16px;display:grid;gap:8px;max-width:56ch}
+.p-list li{position:relative;padding-left:18px;color:var(--mute);font-size:14px}
+.p-list li::before{content:"—";position:absolute;left:0;color:var(--accent);font-weight:600}
+.p-facts{display:grid;gap:9px;margin-top:24px;border-top:1px solid var(--line);padding-top:20px}
+.fact{display:flex;gap:16px;align-items:baseline;font-size:13.5px}
+.fact .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--faint);text-transform:uppercase;flex:0 0 78px}
+.fact .v{font-weight:500}
+
+/* ============ about ============ */
+.about-grid{display:grid;grid-template-columns:1fr 1.35fr;gap:clamp(32px,6vw,84px)}
+.about-left .label{font-family:var(--mono);font-size:12px;letter-spacing:.16em;color:var(--accent)}
+.about-left h2{font-size:clamp(23px,3.4vw,32px);letter-spacing:-.02em;font-weight:700;margin-top:8px}
+.about-right p{color:var(--mute);font-size:15.5px;max-width:60ch}
+.about-right p + p{margin-top:16px}
+.skills{display:flex;flex-wrap:wrap;gap:9px;margin-top:28px}
+.skill{border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:13px;font-weight:500;background:#fff}
+.timeline{margin-top:38px;border-top:1px solid var(--line)}
+.t-row{display:flex;gap:20px;padding:13px 4px;border-bottom:1px solid var(--line);font-size:14px;align-items:baseline}
+.t-row .mono{flex:0 0 128px;font-size:11.5px;color:var(--faint);letter-spacing:.04em}
+.t-row .v{font-weight:500}
+.t-row .v small{display:block;font-weight:400;color:var(--faint);font-size:12.5px;margin-top:2px}
+
+/* ============ contact ============ */
+.contact{border-top:1px solid var(--line)}
+.contact .label{font-family:var(--mono);font-size:12px;letter-spacing:.16em;color:var(--accent)}
+.contact .big{
+  font-family:var(--disp);font-weight:700;letter-spacing:-.03em;
+  font-size:clamp(38px,7.5vw,84px);line-height:1.06;margin:18px 0 34px;
+}
+.mail{
+  display:inline-block;font-family:var(--disp);font-weight:600;
+  font-size:clamp(19px,3vw,30px);color:var(--ink);text-decoration:none;
+  border-bottom:3px solid var(--accent);padding-bottom:4px;
+  transition:color .2s,border-color .2s;
+}
+.mail:hover{color:var(--accent)}
+.links{display:flex;flex-wrap:wrap;gap:12px 26px;margin-top:42px}
+.links a{
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.1em;color:var(--mute);
+  text-decoration:none;border-bottom:1px solid transparent;padding-bottom:2px;
+  transition:color .2s,border-color .2s;
+}
+.links a:hover{color:var(--ink);border-color:var(--ink)}
+
+/* ============ footer ============ */
+footer{border-top:1px solid var(--line);padding:26px 0 42px}
+.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px 24px;font-size:12px;color:var(--faint)}
+.foot .mono{font-size:11px;letter-spacing:.06em}
+.foot a{color:var(--mute);text-decoration:none}
+.foot a:hover{color:var(--ink)}
+
+/* ============ floating preview (signature) ============ */
+#preview{
+  position:fixed;left:0;top:0;width:min(330px,34vw);aspect-ratio:4/3;
+  border-radius:16px;overflow:hidden;pointer-events:none;z-index:40;
+  opacity:0;transform:translate(-50%,-56%) scale(.9);
+  transition:opacity .25s ease,transform .25s ease;
+  box-shadow:0 30px 70px rgba(16,22,28,.20);
+  border:1px solid var(--line);background:var(--panel);
+}
+#preview.on{opacity:1;transform:translate(-50%,-56%) scale(1)}
+#preview svg{width:100%;height:100%;display:block}
+
+/* ============ responsive ============ */
+@media (max-width:760px){
+  .row{grid-template-columns:34px 1fr 34px;gap:12px;padding:20px 2px}
+  .r-cat,.r-year{display:none}
+  .panel-grid{grid-template-columns:1fr;gap:20px;padding-bottom:36px}
+  .about-grid{grid-template-columns:1fr;gap:24px}
+  .status span{display:none}
+  .sec-head{flex-wrap:wrap;justify-content:flex-start;row-gap:4px}
+  .foot{flex-direction:column;align-items:flex-start;gap:6px}
+}
+@media (max-width:560px){
+  .brand .mono{display:none}
+  .hero-meta{gap:12px 28px}
+  .eyebrow{font-size:10.5px;letter-spacing:.1em}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .dot{animation:none}
+  #preview{transition:none}
+  .panel{transition:none}
+}
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap">
+    <!-- ✅ 이름: 류영지 -->
+    <a class="brand" href="#top">류영지<span class="mono">HR · PEOPLE RESEARCH</span></a>
+    <nav class="site-nav" aria-label="주요 메뉴">
+      <a href="#work">작업</a>
+      <a href="#about">소개</a>
+      <a href="#contact">연락처</a>
+    </nav>
+    <div class="status" title="HR 직무 기회를 탐색 중입니다">
+      <span class="dot" aria-hidden="true"></span><span>HR 직무 탐색 중</span>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">
+        <span>PORTFOLIO — 2026</span>
+        <span class="right">SEOUL <span data-clock>--:--</span></span>
+      </div>
+      <!-- ✅ 이름: 류영지 -->
+      <h1 class="name">류영지<span class="dot">.</span></h1>
+      <p class="role">HR · 조직 리서처</p>
+      <p class="thesis">조직의 문제는 데이터로 드러내고, 해결은 사람이 중심에 서도록 설계합니다. HRD 연구·조직 진단·피플 애널리틱스를 중심으로 일해 왔습니다.</p>
+      <div class="hero-meta">
+        <div><span class="k">Based in</span><span class="v">서울, 대한민국</span></div>
+        <div><span class="k">Education</span><span class="v">고려대학교 심리학(사회학 복수전공)</span></div>
+        <div><span class="k">Focus</span><span class="v">HRD · 조직 연구 · 피플 애널리틱스</span></div>
+        <div><span class="k">Status</span><span class="v">HR 직무 기회 탐색 중</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WORK ================= -->
+  <section id="work" class="section">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">SELECTED WORK</span>
+        <h2>선정된 작업</h2>
+        <span class="range">2022 — 2026</span>
+      </div>
+
+      <div class="rows">
+
+        <!-- 프로젝트 1: Korn Ferry M&A HRDD (2026.05 — 07) -->
+        <button class="row" data-panel="panel-3" aria-expanded="false" aria-controls="panel-3">
+          <span class="r-idx">01</span>
+          <span class="r-title">M&A 인사 실사(HRDD)<small>글로벌 건설기계 6개사 조직·임원 데이터 분석</small></span>
+          <span class="r-cat">HR 컨설팅</span>
+          <span class="r-year">2026</span>
+          <span class="r-plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span>
+        </button>
+        <div class="panel" id="panel-3">
+          <div class="panel-inner">
+            <div class="panel-grid">
+              <div class="tile" aria-hidden="true">
+                <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="400" height="300" fill="#E9EDFD"/>
+                  <rect x="66"  y="74"  width="78" height="64" rx="10" fill="#fff" stroke="#10161C" stroke-width="2"/>
+                  <rect x="160" y="74"  width="78" height="64" rx="10" fill="#fff" stroke="#10161C" stroke-width="2"/>
+                  <rect x="254" y="74"  width="78" height="64" rx="10" fill="#2547F4"/>
+                  <rect x="66"  y="154" width="78" height="64" rx="10" fill="#fff" stroke="#10161C" stroke-width="2"/>
+                  <rect x="160" y="154" width="78" height="64" rx="10" fill="#fff" stroke="#10161C" stroke-width="2"/>
+                  <rect x="254" y="154" width="78" height="64" rx="10" fill="#2547F4" opacity=".35"/>
+                  <path d="M105 258 H293" stroke="#10161C" stroke-width="2" stroke-dasharray="2 7" stroke-linecap="round"/>
+                  <circle cx="105" cy="258" r="5" fill="#10161C"/><circle cx="293" cy="258" r="5" fill="#2547F4"/>
+                  <text x="92" y="112" font-family="monospace" font-size="13" fill="#10161C">N-3</text>
+                  <text x="278" y="112" font-family="monospace" font-size="13" fill="#fff">DD</text>
+                </svg>
+              </div>
+              <div>
+                <p class="p-title">M&A 인사 실사 — Korn Ferry HR 컨설팅 인턴십</p>
+                <p class="p-desc">M&A 거래에서 인력 배치의 근거를 만드는 인사실사 수행. 전 세계 6대 건설기계 기업의 조직구조와 임원 데이터를 N-3 벤치마킹으로 비교·분석하고, Direct/Fully/Incremental 방식과 TSA·demographics 검증, 인력 수치 검증을 단독으로 담당했습니다. 16회 이상의 영문 인터뷰와 100페이지 이상의 문서 번역을 지원했고, 이탈리아·인도 실사에 참여해 도출한 Day 1 배치 근거는 실제 조직 재편 계획에 반영되었습니다.</p>
+                <div class="p-facts">
+                  <div class="fact"><span class="k">역할</span><span class="v">임원 데이터 벤치마킹, 인력 수치 검증(단독), 영문 인터뷰 지원</span></div>
+                  <div class="fact"><span class="k">성과</span><span class="v">배치 근거가 실제 조직 재편 계획에 반영</span></div>
+                  <div class="fact"><span class="k">기간</span><span class="v">2026.05 — 2026.07 · Korn Ferry HR 컨설팅 인턴십</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 프로젝트 2: 서울시 창업생태계 -->
+        <button class="row" data-panel="panel-2" aria-expanded="false" aria-controls="panel-2">
+          <span class="r-idx">02</span>
+          <span class="r-title">서울시 창업생태계 정책 분석<small>창업지원시설 성과진단 · 입지분석 · 정책 제안</small></span>
+          <span class="r-cat">데이터 분석</span>
+          <span class="r-year">2025 — 26</span>
+          <span class="r-plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span>
+        </button>
+        <div class="panel" id="panel-2">
+          <div class="panel-inner">
+            <div class="panel-grid">
+              <div class="tile" aria-hidden="true">
+                <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="400" height="300" fill="#F1F3F6"/>
+                  <circle cx="86" cy="66" r="7" fill="#B7C6F7"/><circle cx="140" cy="88" r="7" fill="#B7C6F7"/>
+                  <circle cx="196" cy="58" r="7" fill="#B7C6F7"/><circle cx="252" cy="80" r="7" fill="#B7C6F7"/>
+                  <circle cx="310" cy="64" r="7" fill="#B7C6F7"/><circle cx="120" cy="130" r="7" fill="#B7C6F7"/>
+                  <circle cx="238" cy="122" r="7" fill="#B7C6F7"/><circle cx="330" cy="120" r="7" fill="#B7C6F7"/>
+                  <path d="M60 262 L60 262" stroke="#2547F4" stroke-width="2"/>
+                  <path d="M72 262 H104 V214 H136 V246 H168 V186 H200 V228 H232 V158 H264 V196 H296 V128 H328 V168 H360" fill="none" stroke="#2547F4" stroke-width="2.5" stroke-linejoin="round"/>
+                  <path d="M60 262 H372" stroke="#10161C" stroke-width="2"/>
+                  <path d="M336 96 L352 80 M352 80 h-12 M352 80 v12" stroke="#10161C" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div>
+                <p class="p-title">서울시 창업생태계 정책 분석 — 데이터 리서치 & 보고서</p>
+                <p class="p-desc">서울시 창업지원시설의 성과 진단과 운영체계 개편을 목표로 한 정책 분석 프로젝트. 예산 성과창출 내역과 raw data를 분석해 운영 비효율 구간을 도출하고, 체계 개편안의 BCG 매트릭스·버티컬 분석을 직접 설계했습니다. 스타트업 데이터 7,000건 이상을 단독 정제해 지역구별 신성장산업(AI·모빌리티·로보틱스) 현황을 분석했고, 지하철 노선도·유입인구 같은 비전통적 지표를 직접 제안해 입지분석 정확도를 높였습니다. 해외 지원프로그램 30여 건을 벤치마킹해 서울시 테스트베드 도입 필요성을 발표했고, 이는 테스트베드서울 2.0 가동 발표로 이어졌습니다.</p>
+                <ul class="p-list">
+                  <li>창업지원시설 10곳 중 6곳 단독 분석 — 조성배경·개발계획·입지특성 등 20개+ 요소 반영, 243페이지 최종보고서 작성 (서울시 공식 제출)</li>
+                  <li>국내외 성과측정 KPI 체계 비교 분석 후 신규 KPI 아이디어 제안</li>
+                  <li>컴퍼니빌더·PF 등 국내 미도입 지원사업 모델 리서치 → 서울시 적용 방식 제안</li>
+                  <li>진도보고 자료·발표 스크립트 작성, 분석 결과 도식화 — 매트릭스 분석은 서울시 담당자에게서 긍정적 피드백 수령</li>
+                </ul>
+                <div class="p-facts">
+                  <div class="fact"><span class="k">역할</span><span class="v">데이터 정제·분석, 지표 설계, BCG 매트릭스 설계, 보고서·발표 자료 작성</span></div>
+                  <div class="fact"><span class="k">성과</span><span class="v">테스트베드서울 2.0 가동 계기 제시 · 243p 보고서 단독 작성 · 해외 사례 30개+ 벤치마킹</span></div>
+                  <div class="fact"><span class="k">기간</span><span class="v">2025.12.30 — 2026.03.27 (EONGROUP 리서치팀 RA)</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 프로젝트 4: SNC Lab UX 리서치 -->
+        <button class="row" data-panel="panel-4" aria-expanded="false" aria-controls="panel-4">
+          <span class="r-idx">03</span>
+          <span class="r-title">공공 서비스 플랫폼 UX 리서치<small>사용성 진단 · 정책·가이드라인 리디자인</small></span>
+          <span class="r-cat">UX 리서치</span>
+          <span class="r-year">2024 — 25</span>
+          <span class="r-plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span>
+        </button>
+        <div class="panel" id="panel-4">
+          <div class="panel-inner">
+            <div class="panel-grid">
+              <div class="tile" aria-hidden="true">
+                <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="400" height="300" fill="#F1F3F6"/>
+                  <path d="M60 232 C 120 232 130 88 200 88 S 280 180 340 180" fill="none" stroke="#2547F4" stroke-width="2.5" stroke-linecap="round"/>
+                  <circle cx="60" cy="232" r="8" fill="#10161C"/>
+                  <circle cx="200" cy="88" r="8" fill="#2547F4"/>
+                  <circle cx="340" cy="180" r="8" fill="#10161C"/>
+                  <circle cx="130" cy="170" r="6" fill="#B7C6F7"/>
+                  <circle cx="270" cy="132" r="6" fill="#B7C6F7"/>
+                  <path d="M340 180 l0 -26 m0 0 h-10 m10 0 h10" stroke="#2547F4" stroke-width="2" stroke-linecap="round" opacity="0"/>
+                  <path d="M356 172 v18 h-18" fill="none" stroke="#10161C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <p class="p-title">공공 서비스 플랫폼 UX 리서치 — SNC Lab</p>
+                <p class="p-desc">공공 서비스 플랫폼의 사용성 분석을 수행하고 조직·사용자 경험 관점의 개선 전략을 제안했습니다. 글로벌 벤치마킹으로 정책과 시스템 개설 기준을 수립하고, VOC 분석으로 조직과 고객의 페인포인트를 분류해 개선 우선순위를 도출했으며, 페르소나·여정 분석에 기반한 이해관계자 중심 의사결정 프로세스를 설계했습니다.</p>
+                <div class="p-facts">
+                  <div class="fact"><span class="k">역할</span><span class="v">사용성 분석, VOC 분석, 벤치마킹, 여정 설계</span></div>
+                  <div class="fact"><span class="k">성과</span><span class="v">정책·가이드라인 개선안 수립, 개선 우선순위 체계화</span></div>
+                  <div class="fact"><span class="k">기간</span><span class="v">2024.09 — 2025.01 (UX/UI 컨설팅 리서치 인턴)</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 프로젝트: 국가 HRD 연구 (2022 — 2023) -->
+        <button class="row" data-panel="panel-1" aria-expanded="false" aria-controls="panel-1">
+          <span class="r-idx">04</span>
+          <span class="r-title">국가 HRD 연구 · AI e-포트폴리오<small>역량기반 교육(CBE) 평가 시스템</small></span>
+          <span class="r-cat">HRD 연구</span>
+          <span class="r-year">2022 — 23</span>
+          <span class="r-plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span>
+        </button>
+        <div class="panel" id="panel-1">
+          <div class="panel-inner">
+            <div class="panel-grid">
+              <div class="tile" aria-hidden="true">
+                <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="400" height="300" fill="#E9EDFD"/>
+                  <circle cx="200" cy="150" r="86" fill="none" stroke="#10161C" stroke-width="2" opacity=".35"/>
+                  <circle cx="200" cy="150" r="56" fill="none" stroke="#10161C" stroke-width="2" opacity=".55"/>
+                  <path d="M200 150 L200 64 L286 128 L252 214 L148 214 L114 128 Z" fill="#2547F4" opacity=".18"/>
+                  <path d="M200 150 L200 64 L286 128 L252 214 L148 214 L114 128 Z" fill="none" stroke="#2547F4" stroke-width="2.5"/>
+                  <circle cx="200" cy="64" r="6" fill="#2547F4"/><circle cx="286" cy="128" r="6" fill="#2547F4"/>
+                  <circle cx="252" cy="214" r="6" fill="#2547F4"/><circle cx="148" cy="214" r="6" fill="#2547F4"/>
+                  <circle cx="114" cy="128" r="6" fill="#2547F4"/>
+                  <circle cx="200" cy="150" r="7" fill="#10161C"/>
+                </svg>
+              </div>
+              <div>
+                <p class="p-title">국가 HRD 연구 — AI 기반 e-포트폴리오 · 물어보살 Q&A</p>
+                <p class="p-desc">전국 5개 의과대학 신경과 전공의와 교수를 대상으로 역량기반 교육 효과를 평가한 국가 연구. 인터뷰(FGI) 기획부터 진행·전사까지 단독 수행하고, 만족도 설문(정량)과 인터뷰(정성) 데이터를 교차 검증해 ‘즉각적 피드백 부재’라는 구조적 문제를 규명했습니다. 이를 해결하기 위해 카카오 오픈채팅 기반 ‘물어보살’ Q&A 채널과 e-포트폴리오 시스템 내 질문·답변 기능을 새로 설계했습니다.</p>
+                <div class="p-facts">
+                  <div class="fact"><span class="k">역할</span><span class="v">인터뷰 설계·수행, 정성·정량 통합 분석, 기능 설계</span></div>
+                  <div class="fact"><span class="k">성과</span><span class="v">교육 효과성 +14% · 이용자 7배 확대(12→84명) · PLOS ONE 게재</span></div>
+                  <div class="fact"><span class="k">기간</span><span class="v">2022.06 — 2023.12 (한양대학교 산학협력단)</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about" class="section" style="padding-top:0">
+    <div class="wrap about-grid">
+      <div class="about-left">
+        <span class="label">ABOUT</span>
+        <h2>소개</h2>
+      </div>
+      <div class="about-right">
+        <p>‘측정할 수 없는 것은 개선할 수 없다’는 기준으로 일해 왔습니다. 조직의 문제는 숫자만으로는 안 보이고, 이야기만으로는 끝나지 않는다고 믿습니다. 설문과 인터뷰를 교차 검증해 문제를 정확히 짚어내고, 그 결과가 지표·시스템·도구로 이어지게 만듭니다.</p>
+        <p>고려대학교에서 심리학을 전공하고 사회학을 복수전공하며(2022–2027, 3.75/4.5) 사람의 동기와 집단의 구조를 공부했습니다. 이후 HRD 국가 연구, 스타트업 생태계 정책 분석, M&A 인사실사, UX 리서치를 거치며 조직을 연구하는 방법론을 데이터로 다듬어 왔습니다.</p>
+        <div class="skills" aria-label="역량">
+          <span class="skill">FGI · 심층 인터뷰 설계</span>
+          <span class="skill">설문 설계·분석</span>
+          <span class="skill">정성·정량 교차 분석</span>
+          <span class="skill">피플 애널리틱스</span>
+          <span class="skill">성과지표 설계</span>
+          <span class="skill">VOC 분석</span>
+          <span class="skill">보고서 작성</span>
+          <span class="skill">ChatGPT · Claude 활용</span>
+        </div>
+        <div class="timeline">
+          <div class="t-row"><span class="mono">2026.05 — 2026.07</span><span class="v">Korn Ferry · HR 컨설팅 인턴십<small>M&A 인사실사(HRDD) — 글로벌 6개사 조직·임원 데이터 분석</small></span></div>
+          <div class="t-row"><span class="mono">2025.12 — 2026.03</span><span class="v">EONGROUP · RA (리서치팀)<small>서울시 창업생태계 정책 분석, 성과지표 체계화</small></span></div>
+          <div class="t-row"><span class="mono">2025.07 — 현재</span><span class="v">한양대학교 · 연구보조원<small>의료기관 업무 프로세스 분석, 사용성 테스트·인터뷰</small></span></div>
+          <div class="t-row"><span class="mono">2024.09 — 2025.01</span><span class="v">SNC Lab Corp · UX/UI 컨설팅 리서치 인턴<small>공공 서비스 플랫폼 사용성 분석</small></span></div>
+          <div class="t-row"><span class="mono">2022.06 — 2023.12</span><span class="v">한양대학교 산학협력단 · 연구보조원<small>역량기반 교육(CBE) 국가 연구, AI e-포트폴리오 개발 참여</small></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact" class="section contact">
+    <div class="wrap">
+      <span class="label">CONTACT</span>
+      <p class="big">사람과 조직,<br>같이 들여다볼까요?</p>
+      <!-- 이메일은 스팸봇 수집 방지를 위해 스크립트로 조립해 표시합니다 (원문 HTML에는 주소를 직접 쓰지 않음) -->
+      <a class="mail" id="mail-link" href="#">이메일 보내기</a>
+      <!-- ✅ LinkedIn 링크 (이력서·블로그는 별도 준비 시 추가) -->
+      <div class="links">
+        <a href="https://www.linkedin.com/in/jennyryu2003" target="_blank" rel="noopener" aria-label="LinkedIn">LINKEDIN ↗</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span class="mono">© 2026 류영지</span>
+    <span>사람과 조직을 데이터로 진단합니다</span>
+    <a href="#top" class="mono">위로 ↑</a>
+  </div>
+</footer>
+
+<!-- cursor-following project preview -->
+<div id="preview" aria-hidden="true"></div>
+
+<script>
+// ---- live Seoul clock ----
+(function(){
+  var fmt = new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',hour:'2-digit',minute:'2-digit',hour12:false});
+  function tick(){
+    var t = fmt.format(new Date()).replace(':',' : ');
+    document.querySelectorAll('[data-clock]').forEach(function(el){ el.textContent = t + ' KST'; });
+  }
+  tick(); setInterval(tick, 1000);
+})();
+
+// ---- accordion rows ----
+(function(){
+  document.querySelectorAll('.row').forEach(function(row){
+    row.addEventListener('click', function(){
+      var open = row.getAttribute('aria-expanded') === 'true';
+      row.setAttribute('aria-expanded', String(!open));
+      document.getElementById(row.dataset.panel).classList.toggle('open', !open);
+    });
+  });
+})();
+
+// ---- email assembly (스팸봇이 원문 HTML에서 주소를 긁어가지 못하도록 조립) ----
+(function(){
+  var m = ['jennyryu2003', '@', 'gmail.com'].join('');
+  var a = document.getElementById('mail-link');
+  if (a){ a.textContent = m; a.href = 'mailto:' + m; }
+})();
+
+// ---- cursor-following preview (desktop pointer only) ----
+(function(){
+  var fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
+  var rm   = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!fine || rm) return;
+
+  var pv = document.getElementById('preview');
+  var tx = innerWidth/2, ty = innerHeight/2, cx = tx, cy = ty;
+
+  addEventListener('mousemove', function(e){ tx = e.clientX; ty = e.clientY; }, {passive:true});
+  (function loop(){
+    cx += (tx - cx) * .14;
+    cy += (ty - cy) * .14;
+    pv.style.left = cx + 'px';
+    pv.style.top  = cy + 'px';
+    requestAnimationFrame(loop);
+  })();
+
+  document.querySelectorAll('.row').forEach(function(row){
+    row.addEventListener('mouseenter', function(){
+      var tile = document.querySelector('#' + row.dataset.panel + ' .tile');
+      if (tile){ pv.innerHTML = tile.innerHTML; pv.classList.add('on'); }
+    });
+    row.addEventListener('mouseleave', function(){ pv.classList.remove('on'); });
+  });
+})();
+</script>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4bc70e2c01a94c73b74392e4234840661791215815920" integrity="sha512-L0ha0OXavK/8okipN9F8BtP84dg9DUhPERbBXzwI6dgTA55d2+yweo3pn5CSFYs45/r8md2+xvUPtTdvTNRfjA==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>
